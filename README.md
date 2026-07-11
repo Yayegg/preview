@@ -78,6 +78,5 @@ and all information cards render stacked below. `hero.js` adds the
 - **Brand tuning**: the palette lives in CSS custom properties at the
   top of `assets/css/main.css`; per-project accents live in the data
   array. Cover bases are palettes (`forest`, `charcoal`, `ember`) —
-  `ember` is the Evergreen Charcoal brand cover (orange base, white
-  text, charcoal details) and shows how to add fully branded covers
-  for other projects.
+  `ember` is an optional brand cover (orange base, white text,
+  charcoal details) kept available for fully branded covers.
