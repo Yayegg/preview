@@ -30,6 +30,7 @@
     var prevBtn = shelf.querySelector('[data-prev]');
     var nextBtn = shelf.querySelector('[data-next]');
     var dotsBox = shelf.querySelector('[data-dots]');
+    var chips = Array.prototype.slice.call(shelf.querySelectorAll('[data-chips] .chip'));
 
     var active = 0;
     items.some(function (el, i) {
@@ -117,6 +118,11 @@
             dot.classList.toggle('is-active', i === active);
         });
 
+        var activeGroup = items[active].getAttribute('data-group');
+        chips.forEach(function (chip) {
+            chip.classList.toggle('is-active', chip.getAttribute('data-group') === activeGroup);
+        });
+
         if (prevBtn) {
             prevBtn.disabled = active === 0;
         }
@@ -187,6 +193,25 @@
             setActive(active + 1);
         });
     }
+
+    /* sector chips: jump to the group's first project; if already inside
+       the group, cycle through its projects */
+    chips.forEach(function (chip) {
+        chip.addEventListener('click', function () {
+            var group = chip.getAttribute('data-group');
+            var indexes = [];
+            items.forEach(function (el, i) {
+                if (el.getAttribute('data-group') === group) {
+                    indexes.push(i);
+                }
+            });
+            if (indexes.length === 0) {
+                return;
+            }
+            var position = indexes.indexOf(active);
+            setActive(position === -1 ? indexes[0] : indexes[(position + 1) % indexes.length]);
+        });
+    });
 
     shelf.addEventListener('keydown', function (event) {
         switch (event.key) {
@@ -290,13 +315,31 @@
         resizeFrame = requestAnimationFrame(layout);
     });
 
-    layout();
+    /* --- entrance: start gathered behind the centre, then fan out --- */
 
-    /* enable transitions only after the first layout so the upgrade
-       from the flat shelf doesn't animate */
+    items.forEach(function (el, i) {
+        el.style.setProperty('--tx', '0px');
+        el.style.setProperty('--tz', '-340px');
+        el.style.setProperty('--ry', '54deg');
+        el.style.setProperty('--dim', '0.55');
+        el.style.zIndex = String(100 - Math.abs(i - active));
+    });
+
+    /* two frames so the gathered state paints before transitions enable
+       (with reduced motion the CSS disables transitions and the fan
+       simply appears in place) */
     requestAnimationFrame(function () {
         requestAnimationFrame(function () {
             document.documentElement.classList.add('js-anim');
+            items.forEach(function (el, i) {
+                el.style.transitionDelay = (Math.abs(i - active) * 55) + 'ms';
+            });
+            layout();
+            setTimeout(function () {
+                items.forEach(function (el) {
+                    el.style.transitionDelay = '';
+                });
+            }, 1500);
         });
     });
 })();

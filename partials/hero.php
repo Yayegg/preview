@@ -42,6 +42,7 @@
                 <li
                     class="dossier<?= $i === 0 ? ' is-active' : '' ?>"
                     data-palette="<?= e($p['palette']) ?>"
+                    data-group="<?= e($p['group']) ?>"
                     style="--accent: <?= e($p['accent']) ?>;"
                 >
                     <span class="dossier__back" aria-hidden="true"></span>
@@ -65,7 +66,21 @@
         </button>
 
         <div class="shelf__dots" data-dots aria-hidden="true"></div>
-        <p class="shelf__hint">Select a prospectus to explore the project</p>
+
+        <?php
+            // sector families, in order of first appearance
+            $groups = [];
+            foreach ($projects as $p) {
+                if (!in_array($p['group'], $groups, true)) {
+                    $groups[] = $p['group'];
+                }
+            }
+        ?>
+        <div class="shelf__chips" data-chips role="group" aria-label="Browse projects by sector">
+            <?php foreach ($groups as $group): ?>
+            <button class="chip" type="button" data-group="<?= e($group) ?>"><?= e($group) ?></button>
+            <?php endforeach; ?>
+        </div>
     </div>
 
     <div class="panel" data-panel>

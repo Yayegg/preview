@@ -11,6 +11,7 @@ declare(strict_types=1);
  *
  * Keys:
  *  - slug      URL identifier
+ *  - group     sector family shown in the quick-browse chip row
  *  - number    prospectus number printed on the cover
  *  - title     project name
  *  - tagline   one-line positioning
@@ -28,6 +29,7 @@ declare(strict_types=1);
 return [
     [
         'slug'        => 'oporc',
+        'group'       => 'Agro-Industry',
         'number'      => '01',
         'title'       => 'ÔPorc',
         'tagline'     => 'Modern Livestock Platform',
@@ -43,6 +45,7 @@ return [
     ],
     [
         'slug'        => 'palm-oil-complex',
+        'group'       => 'Agro-Industry',
         'number'      => '02',
         'title'       => 'Palm Oil Industrial Complex',
         'tagline'     => 'Integrated Edible Oils',
@@ -58,6 +61,7 @@ return [
     ],
     [
         'slug'        => 'evergreen-charcoal',
+        'group'       => 'Energy',
         'number'      => '03',
         'title'       => 'Evergreen Charcoal',
         'tagline'     => 'Regenerative Biomass Fuel',
@@ -73,6 +77,7 @@ return [
     ],
     [
         'slug'        => 'solar-irrigation',
+        'group'       => 'Water & AgTech',
         'number'      => '04',
         'title'       => 'Solar Irrigation Network',
         'tagline'     => 'Water Where It Works',
@@ -88,6 +93,7 @@ return [
     ],
     [
         'slug'        => 'avocado-estate',
+        'group'       => 'Horticulture',
         'number'      => '05',
         'title'       => 'Avocado Export Estate',
         'tagline'     => 'Highland Hass for Export',
@@ -103,6 +109,7 @@ return [
     ],
     [
         'slug'        => 'community-energy',
+        'group'       => 'Energy',
         'number'      => '06',
         'title'       => 'Community Renewable Energy',
         'tagline'     => 'Power for Productive Use',
@@ -118,6 +125,7 @@ return [
     ],
     [
         'slug'        => 'agro-industrial-park',
+        'group'       => 'Infrastructure',
         'number'      => '07',
         'title'       => 'Agro-Industrial Park',
         'tagline'     => 'Shared Industrial Backbone',
@@ -133,6 +141,7 @@ return [
     ],
     [
         'slug'        => 'future-projects',
+        'group'       => 'Pipeline',
         'number'      => '08',
         'title'       => 'Future Projects',
         'tagline'     => 'The Pipeline Ahead',

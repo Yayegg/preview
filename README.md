@@ -49,7 +49,14 @@ Then open <http://localhost:8000>.
 - **Swipe** (touch/pen/mouse drag) and **horizontal trackpad scroll**
   step through the fan; **arrow buttons**, **dots**, **← → Home End**
   keys work too. Keyboard focus follows selection.
-- `prefers-reduced-motion` disables the float, sheen and transitions.
+- **Sector chips** under the fan jump to a sector family's first project
+  and cycle through the family on repeat clicks (driven by each
+  project's `group` key).
+- On load the volumes fan out from behind the centre with a slight
+  stagger; the active volume floats gently and casts a faded floor
+  reflection (WebKit/Blink).
+- `prefers-reduced-motion` disables the entrance, float, sheen and
+  transitions.
 
 ## Progressive enhancement
 
