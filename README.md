@@ -31,8 +31,11 @@ Then open <http://localhost:8000>.
 
 ## How the carousel works
 
-- Each project renders as a real 3D volume: front cover, spine, page
-  block and back board, positioned with `transform-style: preserve-3d`.
+- Each project renders as a tabbed 3D project file: a folder back
+  tinted with the project accent, a numbered index tab (staggered
+  across the drawer like a real filing system), a paper edge peeking
+  out, and the prospectus cover as the front face — positioned with
+  `transform-style: preserve-3d`.
 - `hero.js` keeps one piece of state (the active index) and projects it
   into CSS custom properties per volume — `--tx`, `--tz`, `--ry` and a
   `--dim` overlay. CSS composes those into the fan: side volumes sit at
@@ -74,4 +77,7 @@ and all information cards render stacked below. `hero.js` adds the
   cover`). High-resolution aerial shots are the intended end state.
 - **Brand tuning**: the palette lives in CSS custom properties at the
   top of `assets/css/main.css`; per-project accents live in the data
-  array.
+  array. Cover bases are palettes (`forest`, `charcoal`, `ember`) —
+  `ember` is the Evergreen Charcoal brand cover (orange base, white
+  text, charcoal details) and shows how to add fully branded covers
+  for other projects.

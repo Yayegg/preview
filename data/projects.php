@@ -21,7 +21,8 @@ declare(strict_types=1);
  *  - capital   estimated capital requirement
  *  - description  short investor-facing summary
  *  - accent    brand accent colour for the cover and highlights
- *  - palette   cover base: 'forest' or 'charcoal'
+ *  - palette   cover base: 'forest', 'charcoal' or 'ember' (brand orange
+ *              with white text, used by Evergreen Charcoal)
  *  - motif     key of the engraved cover artwork (see motif_svg())
  *  - image     optional path to aerial photography for the cover art
  *              area; when null the engraved motif is used instead
@@ -71,7 +72,7 @@ return [
         'capital'     => 'US$ 2.8M',
         'description' => 'Regenerative charcoal produced from fast-growing managed woodlots and agricultural residues — displacing forest-cut charcoal in urban cooking-fuel markets.',
         'accent'      => '#e87a28',
-        'palette'     => 'charcoal',
+        'palette'     => 'ember',
         'motif'       => 'charcoal',
         'image'       => null,
     ],

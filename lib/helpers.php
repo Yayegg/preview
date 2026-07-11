@@ -66,15 +66,15 @@ function motif_svg(string $motif): string
                 . '<circle cx="90" cy="52" r="3" fill="currentColor" stroke="none" opacity=".7"/>'
                 . '</svg>',
 
-            /* Evergreen Charcoal brand mark: the layered pine in the
-               brand green, details in the accent (currentColor) */
+            /* Evergreen Charcoal brand mark, matching the signage: the
+               slim five-tier pine in brand green with the dimensional
+               charcoal shadow behind it */
             'charcoal' =>
                 $open
-                . '<path d="M80 4 58 38l10-2-16 28 12-2-18 28 28-2v12h12V88l28 2-18-28 12 2-16-28 10 2z"'
+                . '<path d="M80 2 66 22l7-1-13 19 9-2-15 20 11-2-13 20 9-2-19 20 30-2v10h16v-10l30 2-19-20 9 2-13-20 11 2-15-20 9 2-13-19 7 1z"'
+                . ' fill="#26292b" stroke="none" transform="translate(7,5)" opacity=".9"/>'
+                . '<path d="M80 2 66 22l7-1-13 19 9-2-15 20 11-2-13 20 9-2-19 20 30-2v10h16v-10l30 2-19-20 9 2-13-20 11 2-15-20 9 2-13-19 7 1z"'
                 . ' fill="#3e8054" stroke="none"/>'
-                . '<path d="M20 104h120" opacity=".5"/>'
-                . '<circle cx="58" cy="99" r="2.5" fill="currentColor" stroke="none" opacity=".75"/>'
-                . '<circle cx="104" cy="99" r="2.5" fill="currentColor" stroke="none" opacity=".5"/>'
                 . '</svg>',
 
             'solar' =>

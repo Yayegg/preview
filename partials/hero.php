@@ -45,9 +45,9 @@
                     data-group="<?= e($p['group']) ?>"
                     style="--accent: <?= e($p['accent']) ?>;"
                 >
-                    <span class="dossier__back" aria-hidden="true"></span>
-                    <span class="dossier__spine" aria-hidden="true"><?= e($p['title']) ?></span>
-                    <span class="dossier__pages" aria-hidden="true"></span>
+                    <span class="dossier__folder" aria-hidden="true"></span>
+                    <span class="dossier__tab" aria-hidden="true">N°<?= e($p['number']) ?></span>
+                    <span class="dossier__sheets" aria-hidden="true"></span>
                     <a
                         class="dossier__link"
                         href="project.php?slug=<?= e($p['slug']) ?>"

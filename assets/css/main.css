@@ -29,7 +29,7 @@
 
     --cover-w: 214px;
     --cover-h: 300px;
-    --depth: 26px;
+    --depth: 20px;
     --spacing: 148px;
 }
 
@@ -306,9 +306,9 @@ a {
     border-radius: 3px;
 }
 
-.dossier__back,
-.dossier__spine,
-.dossier__pages {
+.dossier__folder,
+.dossier__tab,
+.dossier__sheets {
     display: none;
 }
 
@@ -331,7 +331,7 @@ html.js .shelf__viewport {
 html.js .shelf__track {
     display: block;
     position: relative;
-    height: calc(var(--cover-h) + 148px);
+    height: calc(var(--cover-h) + 156px);
     overflow: visible;
     padding: 0;
     perspective: 1900px;
@@ -344,7 +344,7 @@ html.js .shelf__track {
    breaks pointer hit-testing on 3D content in Chromium. */
 html.js .dossier {
     position: absolute;
-    top: 64px;
+    top: 72px;
     left: 50%;
     margin-left: calc(var(--cover-w) / -2);
     transform-style: preserve-3d;
@@ -384,61 +384,61 @@ html.js-anim .dossier.is-active {
     }
 }
 
-/* --- the volume: back board, spine, page block, front cover --- */
+/* --- the file: folder back, index tab, paper edge, front cover --- */
 
-html.js .dossier__back {
+html.js .dossier__folder {
     display: block;
     position: absolute;
-    inset: 0;
-    background: linear-gradient(200deg, #101715, #0a0e0d);
-    border-radius: 3px;
+    inset: -10px -3px -2px;
+    background:
+        linear-gradient(200deg,
+            color-mix(in srgb, var(--accent, var(--gold)) 26%, #14171a),
+            color-mix(in srgb, var(--accent, var(--gold)) 12%, #0c0f10) 70%);
+    border-radius: 4px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.09);
 }
 
-html.js .dossier__spine {
+/* numbered index tab rising from the folder back; sits 1px behind it so
+   only the part above the folder lip shows */
+html.js .dossier__tab {
     display: flex;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: var(--depth);
-    height: 100%;
-    transform-origin: left center;
-    transform: rotateY(-90deg);
-    background: linear-gradient(180deg, #131b18, #0b100e 85%);
-    box-shadow: inset -1px 0 0 rgba(220, 194, 122, 0.16);
-    flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
-    gap: 12px;
-    padding: 16px 0;
-    writing-mode: vertical-rl;
-    font: 600 8px/1 var(--sans);
-    letter-spacing: 0.24em;
-    text-transform: uppercase;
-    white-space: nowrap;
-    color: var(--ivory-dim);
-    overflow: hidden;
+    position: absolute;
+    top: -28px;
+    left: 8%;
+    width: 34%;
+    height: 34px;
+    padding-top: 4px;
+    transform: translateZ(-1px);
+    background: color-mix(in srgb, var(--accent, var(--gold)) 30%, #171a1c);
+    border-radius: 5px 5px 0 0;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    font: 700 8px/1 var(--sans);
+    letter-spacing: 0.18em;
+    color: rgba(242, 238, 227, 0.8);
 }
 
-html.js .dossier__spine::before {
-    content: "";
-    width: 5px;
-    height: 5px;
-    background: var(--accent, var(--gold));
-    flex: 0 0 auto;
-}
+/* stagger the tabs across the drawer like a real filing system */
+html.js .dossier:nth-child(3n+2) .dossier__tab { left: 33%; }
+html.js .dossier:nth-child(3n) .dossier__tab { left: 58%; }
 
-html.js .dossier__pages {
+/* paper stack peeking out between folder and cover */
+html.js .dossier__sheets {
     display: block;
     position: absolute;
-    top: 3px;
-    bottom: 3px;
-    right: 0;
-    width: var(--depth);
-    transform-origin: right center;
-    transform: rotateY(90deg);
-    background: repeating-linear-gradient(90deg,
-        #ded7c3 0 2px,
-        #c9c2ae 2px 4px);
+    top: -6px;
+    left: 7px;
+    right: 7px;
+    height: 18px;
+    transform: translateZ(calc(var(--depth) / 2));
+    background: linear-gradient(180deg,
+        #f0ead8 0 2px,
+        #d9d2be 2px 3px,
+        #eae4d1 3px 5px,
+        #d3ccb7 5px 6px,
+        #e4deca 6px 100%);
+    border-radius: 2px 2px 0 0;
 }
 
 /* the link is the front cover face itself; the box-reflect paints a
@@ -477,6 +477,39 @@ html.js .dossier__link {
 .cover[data-palette="charcoal"] {
     --cover-a: #272b2e;
     --cover-b: #121416;
+}
+
+/* Evergreen Charcoal brand cover: dark grey swapped for the brand
+   orange, text kept white, details in charcoal */
+.cover[data-palette="ember"] {
+    --cover-a: #ef8330;
+    --cover-b: #bd5d18;
+}
+
+.cover[data-palette="ember"] .cover__brand,
+.cover[data-palette="ember"] .cover__no,
+.cover[data-palette="ember"] .cover__foot {
+    color: rgba(255, 255, 255, 0.92);
+}
+
+.cover[data-palette="ember"] .cover__tag {
+    color: rgba(255, 255, 255, 0.82);
+}
+
+.cover[data-palette="ember"] .cover__frame {
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.cover[data-palette="ember"] .cover__foot {
+    border-top-color: rgba(255, 255, 255, 0.35);
+}
+
+.cover[data-palette="ember"] .cover__band {
+    background: linear-gradient(180deg, #2e3235, #17191b);
+}
+
+.cover[data-palette="ember"] .cover__peek {
+    color: #26221c;
 }
 
 .cover > * {
@@ -966,7 +999,7 @@ html.js .panel__card + .panel__card {
     :root {
         --cover-w: 180px;
         --cover-h: 252px;
-        --depth: 21px;
+        --depth: 16px;
         --spacing: 112px;
     }
 
@@ -983,7 +1016,7 @@ html.js .panel__card + .panel__card {
     :root {
         --cover-w: 152px;
         --cover-h: 214px;
-        --depth: 17px;
+        --depth: 13px;
         --spacing: 76px;
     }
 
